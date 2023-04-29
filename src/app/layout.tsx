@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from 'next/font/google';
 import type { ChildrenProps } from '@/utils/function-component';
 
 import { fc } from '@/utils/function-component';
+import { url } from '@/utils/url';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
@@ -26,42 +27,42 @@ export const metadata = {
     card: 'summary_large_image'
   },
   themeColor: THEME_COLOR,
-  manifest: '/illusion-website/favicons/site.webmanifest',
+  manifest: url('/favicons/site.webmanifest'),
   icons: [
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      url: '/illusion-website/favicons/apple-touch-icon.png'
+      url: url('/favicons/apple-touch-icon.png')
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      url: '/illusion-website/favicons/favicon-32x32.png'
+      url: url('/favicons/favicon-32x32.png')
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '194x194',
-      url: '/illusion-website/favicons/favicon-194x194.png'
+      url: url('/favicons/favicon-194x194.png')
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '192x192',
-      url: '/illusion-website/favicons/android-chrome-192x192.png'
+      url: url('/favicons/android-chrome-192x192.png')
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      url: '/illusion-website/favicons/favicon-16x16.png'
+      url: url('/favicons/favicon-16x16.png')
     }
   ],
   description: SITE_DESCRIPTION,
   openGraph: {
     images: [{
-      url: '/illusion-website/images/logo-594x594.png',
+      url: url('/images/logo-594x594.png'),
       width: 594,
       height: 594
     }],
@@ -73,8 +74,8 @@ export const metadata = {
   },
   other: {
     'msapplication-TileColor': '#ffc40d',
-    'msapplication-TileImage': '/illusion-website/favicons/mstile-144x144.png',
-    'msapplication-config': '/illusion-website/favicons/browserconfig.xml'
+    'msapplication-TileImage': url('/favicons/mstile-144x144.png'),
+    'msapplication-config': url('/favicons/browserconfig.xml')
   }
 };
 

@@ -1,6 +1,7 @@
 import type { ChildrenProps } from '@/utils/function-component';
 
 import { fc } from '@/utils/function-component';
+import { url } from '@/utils/url';
 
 const title = 'Discordサーバーガイドライン';
 const description = 'illusionのDiscordサーバーに参加するにあたって覚えること・守るべきこと。';
@@ -12,7 +13,7 @@ export const metadata = {
     type: 'article',
     title,
     description,
-    url: '/community/discord'
+    url: url('/community/discord')
   }
 };
 

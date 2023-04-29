@@ -5,5 +5,6 @@ declare namespace NodeJS {
     readonly NEXT_PUBLIC_BASE_URL: string;
     readonly NEXT_PUBLIC_SITE_SHORT_DESCRIPTION: string;
     readonly NEXT_PUBLIC_DISCORD_INVITE_CODE: string;
+    readonly NEXT_PUBLIC_BASE_PATH: string
   }
 }

@@ -10,6 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import NextLink from 'next/link';
 
 import { fc } from '@/utils/function-component';
+import { url } from '@/utils/url';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
@@ -29,7 +30,7 @@ export default fc('Page', () => {
         sx={{
           '::before': {
             content: '""',
-            backgroundImage: 'url(/illusion-website/images/logo-594x594.png)',
+            backgroundImage: `url(${url('/images/logo-594x594.png')})`,
             backgroundAttachment: 'fixed',
             top: '-5px',
             bottom: '-5px',
