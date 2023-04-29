@@ -1,0 +1,50 @@
+{
+  "name": "illusion-website",
+  "version": "1.0.0",
+  "description": "The official website of illusion.",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "run-s start:*",
+    "start:build": "pnpm run build",
+    "start:serve": "serve out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illusionDev-CF/illusion-website.git"
+  },
+  "keywords": [
+    "illusion"
+  ],
+  "author": "illusionDev-CF",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/illusionDev-CF/illusion-website/issues"
+  },
+  "homepage": "https://github.com/illusionDev-CF/illusion-website#readme",
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.3.1",
+    "@types/dedent": "^0.7.0",
+    "@types/node": "18.16.2",
+    "@types/react": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-sort-exports": "^0.8.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^14.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.2",
+    "dedent": "^0.7.0",
+    "next": "^13.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
