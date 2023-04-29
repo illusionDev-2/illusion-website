@@ -64,7 +64,7 @@ export const metadata = {
       height: 594
     }],
     type: 'website',
-    title: `${SITE_SHORT_DESCRIPTION} - ${SITE_NAME}`,
+    title: SITE_NAME,
     description: SITE_DESCRIPTION,
     url: '/',
     siteName: SITE_NAME
