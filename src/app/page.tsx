@@ -29,7 +29,7 @@ export default fc('Page', () => {
         sx={{
           '::before': {
             content: '""',
-            backgroundImage: 'url(/images/logo-594x594.png)',
+            backgroundImage: 'url(/illusion-website/images/logo-594x594.png)',
             backgroundAttachment: 'fixed',
             top: '-5px',
             bottom: '-5px',

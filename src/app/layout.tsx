@@ -61,7 +61,7 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   openGraph: {
     images: [{
-      url: '/images/logo-594x594.png',
+      url: '/illusion-website/images/logo-594x594.png',
       width: 594,
       height: 594
     }],
