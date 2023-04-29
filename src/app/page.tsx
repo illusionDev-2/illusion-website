@@ -73,7 +73,7 @@ export default fc('Page', () => {
               fontSize='1.5rem'
               href='/community/discord'
               underline='hover'
-            >参加はこちらから</MuiLink>
+            >ルールとリンクはこちらから</MuiLink>
           </Grid>
         </Grid>
       </Stack>
