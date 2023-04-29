@@ -18,8 +18,7 @@ const notoSansJp = Noto_Sans_JP({
 export const metadata = {
   title: {
     default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
-    absolute: `${SITE_SHORT_DESCRIPTION} - ${SITE_NAME}`
+    template: `%s | ${SITE_NAME}`
   },
   twitter: {
     card: 'summary_large_image'
