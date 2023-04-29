@@ -1,5 +1,6 @@
 'use client';
 
+import { lighten } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import MuiLink from '@mui/material/Link';
@@ -30,6 +31,7 @@ export default fc('Page', () => {
         sx={{
           '::before': {
             content: '""',
+            background: lighten(theme.palette.background.default, 0.1),
             backgroundImage: `url(${url('/images/logo-594x594.png')})`,
             backgroundAttachment: 'fixed',
             top: '-5px',
