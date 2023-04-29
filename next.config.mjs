@@ -6,8 +6,8 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH;
  * @type {import('next').NextConfig}
  */
 export default {
-  basePath: `/${BASE_PATH}`,
-  assetPrefix: `/${BASE_PATH}`,
+  basePath: BASE_PATH ? `/${BASE_PATH}` : undefined,
+  assetPrefix: BASE_PATH ? `/${BASE_PATH}` : undefined,
   experimental: {
     appDir: true
   },

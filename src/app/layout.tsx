@@ -8,7 +8,6 @@ import { url } from '@/utils/url';
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
 
 const notoSansJp = Noto_Sans_JP({
@@ -17,7 +16,6 @@ const notoSansJp = Noto_Sans_JP({
 });
 
 export const metadata = {
-  metadataBase: new URL(BASE_URL),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
