@@ -26,36 +26,36 @@ export const metadata = {
     card: 'summary_large_image'
   },
   themeColor: THEME_COLOR,
-  manifest: '/favicons/site.webmanifest',
+  manifest: '/illusion-website/favicons/site.webmanifest',
   icons: [
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      url: '/favicons/apple-touch-icon.png'
+      url: '/illusion-website/favicons/apple-touch-icon.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      url: '/favicons/favicon-32x32.png'
+      url: '/illusion-website/favicons/favicon-32x32.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '194x194',
-      url: '/favicons/favicon-194x194.png'
+      url: '/illusion-website/favicons/favicon-194x194.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '192x192',
-      url: '/favicons/android-chrome-192x192.png'
+      url: '/illusion-website/favicons/android-chrome-192x192.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      url: '/favicons/favicon-16x16.png'
+      url: '/illusion-website/favicons/favicon-16x16.png'
     }
   ],
   description: SITE_DESCRIPTION,
@@ -73,8 +73,8 @@ export const metadata = {
   },
   other: {
     'msapplication-TileColor': '#ffc40d',
-    'msapplication-TileImage': '/favicons/mstile-144x144.png',
-    'msapplication-config': '/favicons/browserconfig.xml'
+    'msapplication-TileImage': '/illusion-website/favicons/mstile-144x144.png',
+    'msapplication-config': '/illusion-website/favicons/browserconfig.xml'
   }
 };
 
