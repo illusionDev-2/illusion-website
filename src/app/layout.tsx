@@ -58,7 +58,7 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   openGraph: {
     images: [{
-      url: url('/images/logo-594x594.png'),
+      url: url('/images/logo-594x594.webp'),
       width: 594,
       height: 594
     }],
