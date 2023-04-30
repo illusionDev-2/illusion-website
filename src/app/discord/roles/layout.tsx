@@ -1,4 +1,3 @@
-
 import type { ChildrenProps } from '@/utils/function-component';
 
 import { fc } from '@/utils/function-component';
