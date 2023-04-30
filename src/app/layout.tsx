@@ -6,7 +6,6 @@ import { fc } from '@/utils/function-component';
 import { url } from '@/utils/url';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
-const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
 
