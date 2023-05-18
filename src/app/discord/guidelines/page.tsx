@@ -14,7 +14,7 @@ import { fc } from '@/utils/function-component';
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
 const prohibitedMatters = {
-  '意味のない文章やファイルの連投の連投はしてはいけません': '',
+  '意味のない文章やファイルの連投はしてはいけません': '',
   '宣伝目的や不適切なサーバーのリンクの投稿をしてはいけません': '',
   'IPLogger、tokenLoggerなど様々な悪意のあるサイト及びファイルの投稿をしてはいけません': '',
   '児童を性的に扱うコンテンツの投稿をしてはいけません': ''
