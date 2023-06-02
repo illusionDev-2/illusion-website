@@ -104,7 +104,7 @@ export default fc('Page', () => {
                   </MuiLink>
                 </Stack>
                 <Stack spacing={1}>
-                  <Typography fontSize='large'>代替サーバー</Typography>
+                  <Typography fontSize='large'>代替リンク</Typography>
                   <MuiLink
                     fontSize='1.5rem'
                     href={'https://discord.gg/cjDpfHxymD'}
