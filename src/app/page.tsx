@@ -124,8 +124,8 @@ export default fc('Page', () => {
                   <MuiLink
                     color='action.disabled'
                     component='span'
-                    sx={{ pointerEvents: 'none' }}
                     fontSize='1.5rem'
+                    sx={{ pointerEvents: 'none' }}
                   // href={`https://discord.gg/${DISCORD_INVITE_CODE}`}
                   // rel='noopener noreferrer'
                   // target='_blank'
