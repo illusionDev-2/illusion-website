@@ -120,7 +120,7 @@ export default fc('Page', () => {
                   </MuiLink>
                 </Stack>
                 <Stack>
-                  <Alert severity='error'>2023年6月2日22時30分現在、下記の招待リンクは一時的に無効になっています。</Alert>
+                  <Alert severity='error'>2023年6月3日5時30分現在、下記の招待リンクは一時的に無効になっています。</Alert>
                   <MuiLink
                     color='action.disabled'
                     component='span'
