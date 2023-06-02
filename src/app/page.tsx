@@ -103,12 +103,9 @@ export default fc('Page', () => {
                   </MuiLink>
                 </Stack>
                 <MuiLink
-                  color='action.disabled'
-                  component='span'
                   fontSize='1.5rem'
                   href={`https://discord.gg/${DISCORD_INVITE_CODE}`}
                   rel='noopener noreferrer'
-                  sx={{ pointerEvents: 'none' }}
                   target='_blank'
                 >
                   discord.gg/{DISCORD_INVITE_CODE}
