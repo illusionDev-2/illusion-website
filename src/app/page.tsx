@@ -126,9 +126,6 @@ export default fc('Page', () => {
                     component='span'
                     sx={{ pointerEvents: 'none' }}
                     fontSize='1.5rem'
-                  // href={`https://discord.gg/${DISCORD_INVITE_CODE}`}
-                  // rel='noopener noreferrer'
-                  // target='_blank'
                   >
                     discord.gg/{DISCORD_INVITE_CODE}
                     <OpenInNewIcon
