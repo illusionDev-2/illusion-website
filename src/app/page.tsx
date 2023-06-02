@@ -1,6 +1,7 @@
 'use client';
 
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Alert from '@mui/material/Alert';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import MuiLink from '@mui/material/Link';
@@ -102,15 +103,25 @@ export default fc('Page', () => {
                     {discordRolesMetadata.title}
                   </MuiLink>
                 </Stack>
-                <MuiLink
-                  fontSize='1.5rem'
-                  href={`https://discord.gg/${DISCORD_INVITE_CODE}`}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  discord.gg/{DISCORD_INVITE_CODE}
-                  <OpenInNewIcon color='action' sx={{ verticalAlign: 'middle' }} />
-                </MuiLink>
+                <Stack>
+                  <Alert severity='error'>2023年6月2日22時30分現在、下記の招待リンクは一時的に無効になっています。</Alert>
+                  <MuiLink
+                    color='action.disabled'
+                    component='span'
+                    sx={{ pointerEvents: 'none' }}
+                    fontSize='1.5rem'
+                  // href={`https://discord.gg/${DISCORD_INVITE_CODE}`}
+                  // rel='noopener noreferrer'
+                  // target='_blank'
+                  >
+                    discord.gg/{DISCORD_INVITE_CODE}
+                    <OpenInNewIcon
+                      // color='action'
+                      color='disabled'
+                      sx={{ verticalAlign: 'middle' }}
+                    />
+                  </MuiLink>
+                </Stack>
               </Stack>
             </Stack>
           </Grid>
