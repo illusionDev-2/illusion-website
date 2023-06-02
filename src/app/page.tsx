@@ -103,6 +103,22 @@ export default fc('Page', () => {
                     {discordRolesMetadata.title}
                   </MuiLink>
                 </Stack>
+                <Stack spacing={1}>
+                  <Typography fontSize='large'>代替サーバー</Typography>
+                  <MuiLink
+                    fontSize='1.5rem'
+                    href={'https://discord.gg/cjDpfHxymD'}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    discord.gg/cjDpfHxymD
+                    <OpenInNewIcon
+                      color='action'
+                      //color='disabled'
+                      sx={{ verticalAlign: 'middle' }}
+                    />
+                  </MuiLink>
+                </Stack>
                 <Stack>
                   <Alert severity='error'>2023年6月2日22時30分現在、下記の招待リンクは一時的に無効になっています。</Alert>
                   <MuiLink
