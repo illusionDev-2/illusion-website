@@ -1,11 +1,13 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import type { ChildrenProps } from '@/utils/function-component';
+import type { ReactNode } from 'react';
 
-import { fc } from '@/utils/function-component';
+export type AppThemeProviderProps = {
+  children?: ReactNode
+};
 
-export default fc<Partial<ChildrenProps>>('AppThemeProvider', ({ children }) => {
+export default function AppThemeProvider({ children }: AppThemeProviderProps) {
   const theme = createTheme({
     palette: {
       mode: 'dark',
@@ -29,4 +31,4 @@ export default fc<Partial<ChildrenProps>>('AppThemeProvider', ({ children }) => 
       {children}
     </ThemeProvider>
   );
-});
+}

@@ -1,13 +1,18 @@
 import CssBaseline from '@mui/material/CssBaseline';
 
-import type { ChildrenProps } from '@/utils/function-component';
+import type { ReactNode } from 'react';
 
 import AppThemeProvider from '@/components/AppThemeProvider';
-import { fc } from '@/utils/function-component';
 
-export default fc<Partial<ChildrenProps>>('AppProvider', ({ children }) => (
-  <AppThemeProvider>
-    <CssBaseline />
-    {children}
-  </AppThemeProvider>
-));
+export type AppProviderProps = {
+  children?: ReactNode
+};
+
+export default function AppProvider({ children }: AppProviderProps) {
+  return (
+    <AppThemeProvider>
+      <CssBaseline />
+      {children}
+    </AppThemeProvider>
+  );
+}

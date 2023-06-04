@@ -9,7 +9,6 @@ import dedent from 'dedent';
 import { metadata } from '@/app/discord/guidelines/layout';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs';
 import BulletPointsList from '@/components/BulletPointsList';
-import { fc } from '@/utils/function-component';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
@@ -28,40 +27,42 @@ const considerationMatters = {
   '言語について': 'illusionは当然どんな国や言葉の人でも歓迎しますが、日本語以外の言語に関しては負担が大きいためサポートできません。',
 };
 
-export default fc('Page', () => (
-  <Stack alignItems='flex-start' spacing={3}>
-    <AppBreadcrumbs
-      items={[
-        {
-          label: SITE_NAME,
-          href: '/'
-        },
-        {
-          label: metadata.title
-        }
-      ]}
-    />
-    <Typography component='h1' variant='h4'>{metadata.title}</Typography>
-    <div>
-      <Typography>
-        前提として
-        <MuiLink href='https://discord.com/guidelines' rel='noopener noreferrer' target='_blank'>
-          DISCORD コミュニティガイドライン
-          <OpenInNewIcon color='action' fontSize='small' sx={{ verticalAlign: 'bottom' }} />
-        </MuiLink>
-        を守ってください。
-      </Typography>
-      <Typography>以下はDiscordコミュニティガイドラインに加えて覚えること、守るべきことです。</Typography>
-      <Typography>Discordコミュニティガイドラインとの矛盾がある際はDiscordの方を遵守してください。</Typography>
-    </div>
-    <Stack spacing={1}>
-      <Typography component='h2' variant='h5'>禁止行為</Typography>
-      <Typography>以下の行為をすべて荒らし行為とし、タイムアウトやキックなどの処罰を行います。</Typography>
-      <BulletPointsList list={prohibitedMatters} />
+export default function Page() {
+  return (
+    <Stack alignItems='flex-start' spacing={3}>
+      <AppBreadcrumbs
+        items={[
+          {
+            label: SITE_NAME,
+            href: '/'
+          },
+          {
+            label: metadata.title
+          }
+        ]}
+      />
+      <Typography component='h1' variant='h4'>{metadata.title}</Typography>
+      <div>
+        <Typography>
+          前提として
+          <MuiLink href='https://discord.com/guidelines' rel='noopener noreferrer' target='_blank'>
+            DISCORD コミュニティガイドライン
+            <OpenInNewIcon color='action' fontSize='small' sx={{ verticalAlign: 'bottom' }} />
+          </MuiLink>
+          を守ってください。
+        </Typography>
+        <Typography>以下はDiscordコミュニティガイドラインに加えて覚えること、守るべきことです。</Typography>
+        <Typography>Discordコミュニティガイドラインとの矛盾がある際はDiscordの方を遵守してください。</Typography>
+      </div>
+      <Stack spacing={1}>
+        <Typography component='h2' variant='h5'>禁止行為</Typography>
+        <Typography>以下の行為をすべて荒らし行為とし、タイムアウトやキックなどの処罰を行います。</Typography>
+        <BulletPointsList list={prohibitedMatters} />
+      </Stack>
+      <Stack spacing={1}>
+        <Typography component='h2' variant='h5'>考慮するべきこと</Typography>
+        <BulletPointsList list={considerationMatters} />
+      </Stack>
     </Stack>
-    <Stack spacing={1}>
-      <Typography component='h2' variant='h5'>考慮するべきこと</Typography>
-      <BulletPointsList list={considerationMatters} />
-    </Stack>
-  </Stack>
-));
+  );
+}

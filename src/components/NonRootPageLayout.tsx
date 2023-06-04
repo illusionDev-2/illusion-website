@@ -1,13 +1,15 @@
 import Stack from '@mui/material/Stack';
 
-import type { ChildrenProps } from '@/utils/function-component';
+import type { ReactNode } from 'react';
 
 import NonRootPageLayoutHeader from '@/components/NonRootPageLayoutHeader';
 import SpacingLayout from '@/components/SpacingLayout';
-import { fc } from '@/utils/function-component';
 
-export default fc<Partial<ChildrenProps>>('NonRootPageLayout', ({ children }) => {
+export type NonRootPageLayoutProps = {
+  children?: ReactNode
+};
 
+export default function NonRootPageLayout({ children }: NonRootPageLayoutProps) {
   return (
     <Stack alignItems='flex-start' spacing={2}>
       <NonRootPageLayoutHeader />
@@ -16,4 +18,4 @@ export default fc<Partial<ChildrenProps>>('NonRootPageLayout', ({ children }) =>
       </SpacingLayout>
     </Stack>
   );
-});
+}

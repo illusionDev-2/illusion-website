@@ -1,8 +1,7 @@
 import { Noto_Sans_JP } from 'next/font/google';
 
-import type { ChildrenProps } from '@/utils/function-component';
+import type { ReactNode } from 'react';
 
-import { fc } from '@/utils/function-component';
 import { url } from '@/utils/url';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
@@ -13,6 +12,10 @@ const notoSansJp = Noto_Sans_JP({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin']
 });
+
+export type LayoutProps = {
+  children: ReactNode
+};
 
 export const metadata = {
   title: {
@@ -75,10 +78,12 @@ export const metadata = {
   }
 };
 
-export default fc<ChildrenProps>('Layout', ({ children }) => (
-  <html lang='ja'>
-    <body className={notoSansJp.className}>
-      {children}
-    </body>
-  </html>
-));
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <html lang='ja'>
+      <body className={notoSansJp.className}>
+        {children}
+      </body>
+    </html>
+  );
+}

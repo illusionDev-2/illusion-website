@@ -1,12 +1,17 @@
 'use client';
 
-import type { ChildrenProps } from '@/utils/function-component';
+import type { ReactNode } from 'react';
 
 import AppLayout from '@/components/AppLayout';
-import { fc } from '@/utils/function-component';
 
-export default fc<ChildrenProps>('Template', ({ children }) => (
-  <AppLayout>
-    {children}
-  </AppLayout>
-));
+export type TemplateProps = {
+  children?: ReactNode
+};
+
+export default function Template({ children }: TemplateProps) {
+  return (
+    <AppLayout>
+      {children}
+    </AppLayout>
+  );
+}

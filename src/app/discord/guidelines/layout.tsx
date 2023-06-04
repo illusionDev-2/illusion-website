@@ -1,11 +1,13 @@
+import type { ReactNode } from 'react';
 
-import type { ChildrenProps } from '@/utils/function-component';
-
-import { fc } from '@/utils/function-component';
 import { url } from '@/utils/url';
 
 const title = 'Discordサーバーガイドライン';
 const description = 'Discordサーバーに参加するにあたって覚えること、守るべきことです。';
+
+export type LayoutProps = {
+  children: ReactNode
+};
 
 export const metadata = {
   title,
@@ -18,8 +20,10 @@ export const metadata = {
   }
 };
 
-export default fc<ChildrenProps>('Layout', ({ children }) => (
-  <>
-    {children}
-  </>
-));
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      {children}
+    </>
+  );
+}

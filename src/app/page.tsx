@@ -13,7 +13,6 @@ import NextLink from 'next/link';
 
 import { metadata as discordGuidelinesMetadata } from '@/app/discord/guidelines/layout';
 import { metadata as discordRolesMetadata } from '@/app/discord/roles/layout';
-import { fc } from '@/utils/function-component';
 import { url } from '@/utils/url';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
@@ -21,7 +20,7 @@ const DISCORD_INVITE_CODE = process.env.NEXT_PUBLIC_DISCORD_INVITE_CODE;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
 
-export default fc('Page', () => {
+export default function Page() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -121,4 +120,4 @@ export default fc('Page', () => {
       </Stack>
     </Stack>
   );
-});
+}

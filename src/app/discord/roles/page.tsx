@@ -7,7 +7,6 @@ import dedent from 'dedent';
 import { metadata } from '@/app/discord/roles/layout';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs';
 import BulletPointsList from '@/components/BulletPointsList';
-import { fc } from '@/utils/function-component';
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
@@ -20,20 +19,22 @@ const roles = {
   `
 } as const satisfies Record<string, string>;
 
-export default fc('Page', () => (
-  <Stack alignItems='flex-start' spacing={3}>
-    <AppBreadcrumbs
-      items={[
-        {
-          label: SITE_NAME,
-          href: '/'
-        },
-        {
-          label: metadata.title
-        }
-      ]}
-    />
-    <Typography component='h1' variant='h4'>{metadata.title}</Typography>
-    <BulletPointsList list={roles} />
-  </Stack>
-));
+export default function Page() {
+  return (
+    <Stack alignItems='flex-start' spacing={3}>
+      <AppBreadcrumbs
+        items={[
+          {
+            label: SITE_NAME,
+            href: '/'
+          },
+          {
+            label: metadata.title
+          }
+        ]}
+      />
+      <Typography component='h1' variant='h4'>{metadata.title}</Typography>
+      <BulletPointsList list={roles} />
+    </Stack>
+  );
+}
