@@ -16,7 +16,8 @@ const roles = {
   'はまぐりファミリー': dedent`
     2020～2021年ごろに荒らし連合軍というサーバーで活動していた人に与えられるロールです。
     お知らせで発言をする権限がありましたが、現在は削除されています。
-  `
+  `,
+  'illusionist': '認証すると手に入るロールです。'
 } as const satisfies Record<string, string>;
 
 export default function Page() {
