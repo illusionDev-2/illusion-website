@@ -43,7 +43,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "dedent": "^0.7.0",
-    "next": "^13.3.1",
+    "next": "^13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "url-join": "^5.0.0"
