@@ -1,9 +1,12 @@
 import { Noto_Sans_JP } from 'next/font/google';
 
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { url } from '@/utils/url';
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
@@ -17,7 +20,8 @@ export type LayoutProps = {
   children: ReactNode
 };
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(`${BASE_URL}${BASE_PATH}`),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`
