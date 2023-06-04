@@ -11,7 +11,7 @@ import BulletPointsList from '@/components/BulletPointsList';
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
 const roles = {
-  'Ayanami': '明確な決まりはありませんが、原則創設者にのみ付いているロールです。',
+  'Ayanamist': '明確な決まりはありませんが、原則創設者にのみ付いているロールです。',
   '2ndAyanamist': '全権限を持つ管理者のロールです。',
   'はまぐりファミリー': dedent`
     2020～2021年ごろに荒らし連合軍というサーバーで活動していた人に与えられるロールです。
