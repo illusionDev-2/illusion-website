@@ -1,51 +1,67 @@
 {
   "name": "illusion-website",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "The official website of illusion.",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "run-s start:*",
-    "start:build": "pnpm build",
-    "start:serve": "serve out"
+    "dev": "bun run local next dev",
+    "build": "concurrently -g \"npm:build:*\"",
+    "build:clean": "rimraf .next",
+    "build:next": "next build",
+    "build:adjust": "rimraf -g \"out/**/*/__EMPTYSLUGS.*\"",
+    "preview": "concurrently -g \"npm:preview:*\"",
+    "preview:build": "bun run build",
+    "preview:serve": "serve out",
+    "prod": "corss-env NEXT_PUBLIC_BASE_URL=\"www.ayanamist.blog\" bun run",
+    "local": "cross-env NEXT_PUBLIC_BASE_URL=\"http://localhost:3000\" bun run"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/illusionDev-CF/illusion-website.git"
+    "url": "git+https://github.com/illusionDev-2/illusion-website.git"
   },
   "keywords": [
     "illusion"
   ],
-  "author": "illusionDev-CF",
+  "author": "illusionDev-2",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/illusionDev-CF/illusion-website/issues"
+    "url": "https://github.com/illusionDev-2/illusion-website/issues"
   },
-  "homepage": "https://github.com/illusionDev-CF/illusion-website#readme",
+  "homepage": "https://github.com/illusionDev-2/illusion-website#readme",
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.3.1",
-    "@types/dedent": "^0.7.0",
-    "@types/node": "18.16.2",
-    "@types/react": "^18.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
-    "eslint": "^8.39.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-sort-exports": "^0.8.0",
-    "npm-run-all": "^4.1.5",
-    "serve": "^14.2.0",
-    "typescript": "^5.0.4"
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@types/webpack": "^5.28.5",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.1.1",
+    "rimraf": "^5.0.5",
+    "serve": "^14.2.3",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.2",
-    "dedent": "^0.7.0",
-    "next": "^13.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "url-join": "^5.0.0"
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "cheerio": "^1.0.0-rc.12",
+    "gray-matter": "^4.0.3",
+    "html-to-text": "^9.0.5",
+    "iter-tools": "^7.5.3",
+    "lizod": "^0.2.7",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rehype-budoux": "^1.0.0",
+    "rehype-react": "^8.0.0",
+    "rehype-shift-heading": "^2.0.0",
+    "rehype-slug": "^6.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-rehype": "^11.1.0",
+    "simple-git": "^3.24.0"
   }
 }

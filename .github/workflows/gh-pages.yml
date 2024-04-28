@@ -7,18 +7,16 @@ on:
 
 jobs:
   build-deploy:
-    runs-on: windows-latest
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 8.6.0
-
-      - name: setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: "18.x"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Cache dependencies
         uses: actions/cache@v1
@@ -28,10 +26,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: install
-        run: pnpm i --frozen-lockfile
+        run: bun i --frozen-lockfile
 
       - name: build
-        run: pnpm build
+        run: bun run prod build
 
       - name: add nojekyll
         run: touch ./out/.nojekyll
