@@ -40,8 +40,8 @@ export const generateDefaultMetadata = (parent: any): Metadata => {
           alt: "",
           width: 1200,
           height: 630,
-          type: "image/png",
-          url: "/images/ogp-image-1200x630.png"
+          type: "image/webp",
+          url: "/images/logo-594x594.webp"
         }
       ]
     },
