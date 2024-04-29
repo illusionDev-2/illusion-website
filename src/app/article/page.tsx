@@ -41,7 +41,7 @@ export default async function Page(): Promise<JSX.Element> {
       ]}
     >
       <Typography component="h1" variant="h5" fontWeight="bold">ブログ</Typography>
-      {articles.length > 0 && <ArticleCardList articles={articles.toSorted((a, b) => b.createdTimestamp - a.createdTimestamp)} />}
+      {articles.length > 0 && <ArticleCardList articles={articles.slice().sort((a, b) => b.createdTimestamp - a.createdTimestamp)} />}
       {articles.length === 0 && <Typography>今のところ記事はまだないようです ¯\_(ツ)_/¯</Typography>}
     </NonRootPage>
   );
