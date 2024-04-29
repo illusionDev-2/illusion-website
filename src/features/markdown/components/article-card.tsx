@@ -3,17 +3,17 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import Stack from "@mui/material/Stack";
 
 import { summarize } from "@/features/markdown/utils/summarize";
 
 import type { Article } from "@/features/markdown/utils/types";
+import DraftBadge from "./draft-badge";
 
-export type ArticleCardProps = {
-  article: Article
-};
+export type ArticleCardProps = Article;
 
-export default function ArticleCard({ article }: ArticleCardProps) {
-  const shortDescription = summarize(article.html, { maxLength: 50 });
+export default function ArticleCard({ html, slug, title, draft }: ArticleCardProps) {
+  const shortDescription = summarize(html, { maxLength: 50 });
 
   return (
     <Card
@@ -27,10 +27,13 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       <CardActionArea
         sx={{ flex: 1 }}
         LinkComponent={Link}
-        href={`/blog/${article.slug}`}
+        href={`/article/${slug}`}
       >
         <CardContent>
-          <Typography component="h1" variant="h6">{article.title}</Typography>
+          <Stack alignItems="center" direction="row" spacing={1}>
+            <Typography component="h1" variant="h6">{title}</Typography>
+            {draft && <DraftBadge />}
+          </Stack>
           <Typography color="text.secondary">
             {shortDescription}
           </Typography>

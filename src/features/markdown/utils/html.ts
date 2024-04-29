@@ -4,6 +4,7 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import remarkGfm from "remark-gfm";
 import rehypeShiftHeading from "rehype-shift-heading";
+import { toText } from "hast-util-to-text";
 import rehypeBudoux from "rehype-budoux";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeReact, { type Options as RehypeReactOptions } from "rehype-react";
@@ -11,12 +12,87 @@ import { load } from "cheerio";
 import rehypeSlug from "rehype-slug";
 import { execPipe, map, toArray } from "iter-tools";
 import MarkdownLink from "@/features/markdown/components/markdown-link";
+import rehypeRaw from "rehype-raw";
+import { select, selectAll } from "hast-util-select";
+import type { Root } from "hast";
+import type { Plugin } from "unified";
 
-export const toHtml = async (markdown: Markdown): Promise<Html> => {
+type RehypeFixResourceLinkOptions = {
+  baseUrl: URL
+};
+
+const rehypeFixResourceLink: Plugin<[RehypeFixResourceLinkOptions], Root> = ({ baseUrl }) => root => {
+  const images = selectAll("[src],[href]", root);
+
+  for (const image of images) {
+    const prop = "src" in image.properties ? "src" : "href";
+    const value = image.properties[prop];
+
+    if (typeof value !== "string") {
+      continue;
+    }
+
+    const isAbsoluteUrl = (() => {
+      try {
+        new URL(value);
+
+        return true;
+      } catch {
+        return false;
+      }
+    })();
+
+    if (isAbsoluteUrl) {
+      continue;
+    }
+
+    if (value.startsWith(".") || value.startsWith("/") || value.startsWith("#") || value.startsWith("?")) {
+      continue;
+    }
+
+    image.properties[prop] = new URL(value, baseUrl).href;
+  }
+};
+
+const rehypeFootnoteTitle: Plugin<[], Root> = () => root => {
+  for (const footnote of selectAll("li:has([dataFootnoteBackref])", root)) {
+    const link = select("a", footnote);
+    const href = link?.properties.href;
+
+    if (!link || typeof href !== "string" || !href.startsWith("#")) {
+      continue;
+    }
+
+    const referenceLink = select(href, root);
+
+    if (referenceLink) {
+      referenceLink.properties.title = toText(footnote);
+    }
+  }
+};
+
+export const rehypeFixFootnote: Plugin<[], Root> = () => root => {
+  const heading = select("#footnote-label", root);
+
+  if (heading) {
+    // NOTE: Modify h1 to be h2 because the rehype-react lowers the level of the heading
+    heading.tagName = "h1";
+  }
+};
+
+export const toHtml = async (baseUrl: URL, markdown: Markdown): Promise<Html> => {
   const { renderToString } = await import("react-dom/server");
 
   return await remark()
-    .use(remarkRehype)
+    .use(remarkRehype, {
+      allowDangerousHtml: true
+    })
+    .use(rehypeRaw)
+    .use(rehypeFixResourceLink, {
+      baseUrl
+    })
+    .use(rehypeFootnoteTitle)
+    .use(rehypeFixFootnote)
     .use(remarkGfm)
     .use(rehypeShiftHeading, {
       shift: 1

@@ -1,5 +1,3 @@
-// @ts-check
-
 import ExifTransformer from "exif-be-gone";
 import { createReadStream } from "node:fs";
 import { writeFile } from "node:fs/promises";

@@ -3,26 +3,24 @@ import { ContentsDir } from "@/features/markdown/utils/content";
 import { getHeadings } from "@/features/markdown/utils/html";
 import type { Slug } from "@/features/markdown/utils/types";
 import { execPipe, map, toArray } from "iter-tools";
-import { notFound } from "next/navigation";
 import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";
 import { Metadata } from "next";
-import { siteName } from "@/consts/site";
-import BreadcrumbsItem from "@/features/markdown/components/breadcrumbs-item";
+import { notFound } from "next/navigation";
 
 type PageParams = {
   slug: Slug
 };
 
-const BLOG_CONTENT_DIR = new ContentsDir("blog");
+const ARTICLE_CONTENT_DIR = new ContentsDir("article");
 
 export const generateMetadata = async ({ params: { slug } }: PageProps, parent: any): Promise<Metadata> => {
-  const exists = await BLOG_CONTENT_DIR.existsSlug(slug);
+  const exists = await ARTICLE_CONTENT_DIR.existsSlug(slug);
 
   if (!exists) {
     return generateNotFoundMetadata();
   }
 
-  const { title, description } = await BLOG_CONTENT_DIR.getArticle(slug);
+  const { title, description } = await ARTICLE_CONTENT_DIR.getArticle(slug);
   const defaultMetadata = generateDefaultMetadata(parent);
 
   return {
@@ -38,7 +36,7 @@ export const generateMetadata = async ({ params: { slug } }: PageProps, parent: 
 
 export const generateStaticParams = async (): Promise<PageParams[]> => {
   const slugs = execPipe(
-    await BLOG_CONTENT_DIR.getAllSlugs(),
+    await ARTICLE_CONTENT_DIR.getAllSlugs(),
     map(slug => ({ slug })),
     toArray
   );
@@ -60,11 +58,11 @@ type PageProps = {
 };
 
 export default async function Page({ params: { slug } }: PageProps): Promise<JSX.Element> {
-  if (slug === "__EMPTYSLUGS") {
-    return <></>;
+  if (!await ARTICLE_CONTENT_DIR.existsSlug(slug)) {
+    notFound();
   }
 
-  const article = await BLOG_CONTENT_DIR.getArticle(slug);
+  const article = await ARTICLE_CONTENT_DIR.getArticle(slug);
   const headings = getHeadings(article.html);
 
   return (
@@ -73,7 +71,7 @@ export default async function Page({ params: { slug } }: PageProps): Promise<JSX
       headings={headings}
       breadcrumbs={[
         {
-          href: "/blog",
+          href: "/articles",
           label: "ブログ"
         }
       ]}

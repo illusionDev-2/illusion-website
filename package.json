@@ -6,15 +6,21 @@
   "private": true,
   "lint-staged": {
     "*.{apng,png,jpg,jpeg,jpe,jfif,jfi,jif,tif,tiff,heif,heic}": [
-      "bun run scripts/exif-remove.js"
+      "bun run scripts/exif-remove.ts"
     ]
   },
   "scripts": {
     "prepare": "husky",
-    "dev": "bun run local next dev",
+    "assets": "concurrently -g \"npm:assets:*\"",
+    "assets:clean": "rimraf public/article-assets",
+    "assets:copy": "bun run scripts/copy-assets.ts",
+    "dev": "bun run local \"concurrently\" \"-g \\\"npm:dev:*\\\"\"",
+    "dev:assets": "bun run assets",
+    "dev:next": "next dev",
     "build": "concurrently -g \"npm:build:*\"",
     "build:clean": "rimraf .next",
     "build:next": "next build",
+    "build:assets": "bun run assets",
     "build:adjust": "rimraf -g \"out/**/*/__EMPTYSLUGS.*\"",
     "preview": "concurrently -g \"npm:preview:*\"",
     "preview:build": "bun run build",
@@ -36,6 +42,7 @@
   },
   "homepage": "https://github.com/illusionDev-2/illusion-website#readme",
   "devDependencies": {
+    "@types/hast": "^3.0.4",
     "@types/html-to-text": "^9.0.4",
     "@types/node": "^20.12.7",
     "@types/react": "^18.3.1",
@@ -45,12 +52,14 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.1.1",
     "exif-be-gone": "^1.4.1",
+    "glob": "^10.3.12",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "memory-streams": "^0.1.3",
     "rimraf": "^5.0.5",
     "serve": "^14.2.3",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "unified": "^11.0.4"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -59,6 +68,8 @@
     "@mui/material": "^5.15.15",
     "cheerio": "^1.0.0-rc.12",
     "gray-matter": "^4.0.3",
+    "hast-util-select": "^6.0.2",
+    "hast-util-to-text": "^4.0.2",
     "html-to-text": "^9.0.5",
     "iter-tools": "^7.5.3",
     "lizod": "^0.2.7",
@@ -66,12 +77,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rehype-budoux": "^1.0.0",
+    "rehype-raw": "^7.0.0",
     "rehype-react": "^8.0.0",
     "rehype-shift-heading": "^2.0.0",
     "rehype-slug": "^6.0.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-rehype": "^11.1.0",
-    "simple-git": "^3.24.0"
+    "simple-git": "^3.24.0",
+    "url-join": "^5.0.0"
   }
 }

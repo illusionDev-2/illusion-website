@@ -5,18 +5,18 @@ import type { Heading, Article } from "@/features/markdown/utils/types";
 import Typography from "@mui/material/Typography";
 import TableOfContents from "./table-of-contents";
 import Stack from "@mui/material/Stack";
-import Header from "@/features/markdown/components/header";
 import Box from "@mui/material/Box";
-import ModeIcon from '@mui/icons-material/Mode';
-import Container from "@mui/material/Container";
-import Chip from "@mui/material/Chip"
-import Breadcrumbs, { BreadcrumbsItem } from "@/features/markdown/components/breadcrumbs";
+import type { BreadcrumbsItem } from "@/features/markdown/components/breadcrumbs";
 import { siteName } from "@/consts/site";
 import NonRootPage from "@/components/non-root-page";
+import DraftBadge from "./draft-badge";
 
 const ArticleContent = styled("div")({
   ".budoux-breaked": {
     wordBreak: "keep-all"
+  },
+  img: {
+    maxWidth: "100%"
   },
   "h1, h2, h3, h4, h5, h6": {
     marginTop: "2rem"
@@ -75,7 +75,7 @@ export default function ArticlePage({ title, html, draft, headings, breadcrumbs 
     >
       <Stack alignItems="flex-end" direction="row" spacing={1}>
         <Typography component="h1" variant="h5" fontWeight="bold">{title}</Typography>
-        {draft && <Chip size="small" icon={<ModeIcon fontSize="small" />} label="下書き" />}
+        {draft && <DraftBadge />}
       </Stack>
       <ArticleContentContainer>
         <ArticleContent

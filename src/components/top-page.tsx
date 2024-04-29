@@ -144,7 +144,7 @@ export default function TopPage({ guidelines, roles, blogArticles }: TopPageProp
                   />
                   {blogArticles.length > 0 && (
                     <div>
-                      <MuiLink component={NextLink} href="/blog">もっと見る</MuiLink>
+                      <MuiLink component={NextLink} href="/articles">もっと見る</MuiLink>
                     </div>
                   )}
                 </Stack>

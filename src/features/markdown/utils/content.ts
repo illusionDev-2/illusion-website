@@ -1,14 +1,18 @@
-import { join, parse, resolve } from "node:path";
+import { join, relative } from "node:path";
 import { readFile, readdir, stat } from "node:fs/promises";
-import { asyncFilter, asyncMap, asyncToArray, execPipe, filter, map, reduce, toArray } from "iter-tools";
+import { asyncFilter, asyncToArray, execPipe, map, reduce } from "iter-tools";
 import type { Article, Path, Slug } from "@/features/markdown/utils/types";
 import { ArticleFrontMatter } from "@/features/markdown/utils/types";
 import matter from "gray-matter";
 import { toHtml } from "@/features/markdown/utils/html";
-import { summarize } from "./summarize";
+import { summarize } from "@/features/markdown/utils/summarize";
 import simpleGit, { DefaultLogFields, LogResult } from "simple-git";
+import { existsSync } from "node:fs";
+import urlJoin from "url-join";
 
 const dev = process.env.NODE_ENV === "development";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export type FileTimestamp = {
   createdTimestamp: number,
@@ -47,28 +51,51 @@ const getFileTimestamp = async (path: Path): Promise<FileTimestamp> => {
 };
 
 export class ContentsDir {
-  static readonly #CONTENTS_BASE_DIR = join(process.cwd(), "./src/contents")
+  static readonly CONTENTS_BASE_DIR = join(process.cwd(), "./src/contents")
 
   readonly #contentDirPath: Path;
 
   constructor(dirPath: Path) {
-    this.#contentDirPath = join(ContentsDir.#CONTENTS_BASE_DIR, dirPath);
+    this.#contentDirPath = join(ContentsDir.CONTENTS_BASE_DIR, dirPath);
   }
 
   async existsSlug(slug: Slug): Promise<boolean> {
-    const slugs = await this.getAllSlugs();
+    const path = join(this.#contentDirPath, slug);
 
-    return slugs.includes(slug);
+    if (!existsSync(path)) {
+      return false;
+    }
+
+    const stats = await stat(path);
+
+    if (!stats.isDirectory()) {
+      return false;
+    }
+
+    const contentPath = join(path, "index.md");
+
+    if (!existsSync(contentPath)) {
+      return false;
+    }
+
+    const contentPathStats = await stat(contentPath);
+
+    return contentPathStats.isFile();
   }
 
   async getAllSlugs(): Promise<Slug[]> {
     return await execPipe(
       await readdir(this.#contentDirPath),
-      map(f => parse(f)),
-      filter(p => p.ext === ".md"),
-      map(p => this.getArticle(p.name)),
-      asyncFilter(a => dev || !a.draft),
-      asyncMap(a => a.slug),
+      asyncFilter(async s => {
+        if (!await this.existsSlug(s)) {
+          return false;
+        }
+
+        const article = await this.getArticle(s);
+        const nonDraft = !article.draft;
+
+        return dev || nonDraft;
+      }),
       asyncToArray
     );
   }
@@ -82,7 +109,7 @@ export class ContentsDir {
   }
 
   async getArticle(slug: Slug): Promise<Article> {
-    const path = join(this.#contentDirPath, `${slug}.md`);
+    const path = join(this.#contentDirPath, slug, "index.md");
     const content = await readFile(path, "utf8");
     const parsed = matter(content);
     const context = {
@@ -93,13 +120,8 @@ export class ContentsDir {
       throw context;
     }
 
-    const git = simpleGit(process.cwd());
-
-    const log: LogResult<DefaultLogFields> = await new Promise((resolve, reject) => {
-      git.log({ file: "package.json" }, (err, log) => err ? reject(err) : resolve(log));
-    });
-
-    const html = await toHtml(parsed.content);
+    const baseUrl = urlJoin(BASE_URL as string, "article-assets", relative(ContentsDir.CONTENTS_BASE_DIR, this.#contentDirPath), slug, "/");
+    const html = await toHtml(new URL(baseUrl), parsed.content);
 
     return {
       slug,

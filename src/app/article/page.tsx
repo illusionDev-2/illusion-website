@@ -6,7 +6,7 @@ import { generateDefaultMetadata } from "@/utils/metadata";
 import Typography from "@mui/material/Typography";
 import { Metadata } from "next";
 
-const BLOG_CONTENT_DIR = new ContentsDir("blog");
+const ARTICLE_CONTENT_DIR = new ContentsDir("article");
 
 export const generateMetadata = async (_: unknown, parent: any): Promise<Metadata> => {
   const title = "ブログ";
@@ -25,7 +25,7 @@ export const generateMetadata = async (_: unknown, parent: any): Promise<Metadat
 };
 
 export default async function Page(): Promise<JSX.Element> {
-  const articles = await BLOG_CONTENT_DIR.getAllArticles();
+  const articles = await ARTICLE_CONTENT_DIR.getAllArticles();
 
   return (
     <NonRootPage
@@ -41,7 +41,7 @@ export default async function Page(): Promise<JSX.Element> {
       ]}
     >
       <Typography component="h1" variant="h5" fontWeight="bold">ブログ</Typography>
-      {articles.length > 0 && <ArticleCardList articles={articles} />}
+      {articles.length > 0 && <ArticleCardList articles={articles.toSorted((a, b) => b.createdTimestamp - a.createdTimestamp)} />}
       {articles.length === 0 && <Typography>今のところ記事はまだないようです ¯\_(ツ)_/¯</Typography>}
     </NonRootPage>
   );

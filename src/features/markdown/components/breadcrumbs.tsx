@@ -18,7 +18,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps): JSX.Element {
   return (
     <MuiBreadcrumbs>
       {items.map(({ href, label, emphasis = false }) => (
-        <span>
+        <span key={[href, label, emphasis].join()}>
           {href && (
             <MuiLink
               href={href}
