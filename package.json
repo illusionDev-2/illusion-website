@@ -4,7 +4,13 @@
   "description": "The official website of illusion.",
   "type": "module",
   "private": true,
+  "lint-staged": {
+    "*.{apng,png,jpg,jpeg,jpe,jfif,jfi,jif,tif,tiff,heif,heic}": [
+      "bun run scripts/exif-remove.js"
+    ]
+  },
   "scripts": {
+    "prepare": "husky",
     "dev": "bun run local next dev",
     "build": "concurrently -g \"npm:build:*\"",
     "build:clean": "rimraf .next",
@@ -38,6 +44,10 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^9.1.1",
+    "exif-be-gone": "^1.4.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "memory-streams": "^0.1.3",
     "rimraf": "^5.0.5",
     "serve": "^14.2.3",
     "typescript": "^5.4.5"
