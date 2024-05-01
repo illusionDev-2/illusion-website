@@ -25,7 +25,7 @@
     "preview": "concurrently -g \"npm:preview:*\"",
     "preview:build": "bun run build",
     "preview:serve": "serve out",
-    "prod": "cross-env NEXT_PUBLIC_BASE_URL=\"https://www.ayanamist.blog\" bun run",
+    "prod": "cross-env NEXT_PUBLIC_BASE_URL=\"https://www.綾波レイ.xyz\" bun run",
     "local": "cross-env NEXT_PUBLIC_BASE_URL=\"http://localhost:3000\" bun run"
   },
   "repository": {
