@@ -41,7 +41,7 @@ export const generateDefaultMetadata = (parent: any): Metadata => {
           width: 1200,
           height: 630,
           type: "image/webp",
-          url: "/images/logo-594x594.webp"
+          url: "/images/ogp-image-1200x630.png"
         }
       ]
     },
