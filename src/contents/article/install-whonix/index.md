@@ -24,6 +24,8 @@ Workstationは「Gatewayから供給されているTorネットワークのア�
 Whonixを始める際に必要なもの
 
 - Windows、Intelを内蔵したMac、Linuxの内いずれか
+
+
   |     | 推奨スペック                           | 最小スペック                       |
   | ----- | ---------------------------------------- | ------------------------------------ |
   | RAM | 8GB以上の空きRAM                       | 1GBの空きRAM                       |
@@ -37,7 +39,6 @@ Whonixを始める際に必要なもの
 Whonixを使うにはVirtualBoxという仮想化ソフトウェアが必要になります。
 
 [公式サイト](https://www.virtualbox.org/wiki/Downloads)から最新のVirtualBoxをインストールしてください。
-
 
 # Whonixのインポート
 
@@ -204,7 +205,6 @@ Whonixは[Kicksecure](https://www.kicksecure.com/)という、Whonix同様ENCRYP
 
 こうすることにより、Workstation以外のTorネットワーク接続が可能になります。
 
-
 ## Tor Browserを使わないでOnionサイトを閲覧する方法
 
 Workstationに搭載されているTor Browserは、ブラウザ側でTorへの接続を確立せずに、Gatewayで確立されている接続での通信を行う特別仕様になっていますが、他のOSを使ってしまうと話が違くなり、通常通りの使い方をしてしまうと、Tor Over Tor状態になり、回線が混雑してしまう原因となります。
@@ -213,21 +213,29 @@ Workstationに搭載されているTor Browserは、ブラウザ側でTorへの�
 
 （著者はMullvad Browserを使用しています。）
 
-
 まずブラウザを開き、URLバーに`about:config`と入力します。
 
 そうするとブラウザのコンフィグ画面に移行することが出来るので、ここでブラウザが.onionドメインの名前解決を行うように
 
 `network.dns.blockDotOnion`という項目をTrueからFalseに変更します。
 
-
 これにてブラウザが無事にOnionサイトへ進めるようになりました。
 
-
 # 最後に
+
 Torネットワークは貴方のプライバシーを保護し、言論の自由を保護してくれる便利なものですが、決して成りすましなどの他人に迷惑をかける行為、恐喝やハッキングなどの犯罪行為などに利用してはいけません。
 正しい使用用途で使いましょう
 
 <p style="font-size: 0.5rem">???: ネットの中だからって、何でもやっていいと思ったら、大間違いだ！</p>
 
 解説が長々となってしまいましたが、これで締めさせてもらいます。
+
+# 参考にした文献
+
+- https://www.whonix.org/wiki/Documentation
+- - https://www.whonix.org/wiki/System_Requirements
+  - https://www.whonix.org/wiki/Language
+  - https://www.whonix.org/wiki/Post_Install_Advice
+- https://www.kicksecure.com/wiki/Documentation
+- - https://www.kicksecure.com/wiki/Keyboard_Layout
+- https://unix.stackexchange.com/questions/361608/visiting-darknet-tor-sites-with-firefox#361609
