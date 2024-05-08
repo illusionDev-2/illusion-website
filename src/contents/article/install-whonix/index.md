@@ -77,6 +77,8 @@ torrcを編集する場合、`/usr/local/etc/torrc.d/50_user.conf`にあるデ�
 
 と打ち込みmousepad（テキストエディタ）をRoot権限で開きtorrcを編集します。
 
+（この時、パスワードを求められたら`changeme`と入力してください。Whonixのデフォルトパスワードです。）
+
 編集が完了したらCtrl + Sを押してセーブしてからmousepadを終了してください。
 
 次にスタートメニューのSystemからAnon Connection Wizardを開き、Connectを選択してTorネットワークに接続します。
@@ -122,6 +124,8 @@ Whonix-Gatewayを起動したまま、VirtualBoxからWhonix-Workstationを起�
 選択が完了したらエンターキーで確定して、`ja_JP.UTF-8 UTF-8`を選択しスペースキーを押してください。
 
 すると日本語の言語ファイルが生成されるので一旦ログアウト（又はシャットダウン）して再ログインしてください。
+
+（ログイン時のユーザー名は`user`、パスワードは`changeme`です。）
 
 ## 日本語フォントの導入
 
@@ -171,7 +175,7 @@ Whonixを使うにあたり、ホストマシンでは行わないであろう�
 
 その後自身で決めたパスワードを入力することでパスワードが変更することができます。
 
-これにてWhonix-Workstationの設定完了です。安心してブラウジングが可能になりました。
+これにてWhonix-Workstationの設定完了です。安心してブラウジングすることが可能になりました。
 
 # Whonix-Workstation以外のOSでTorネットワークに接続する方法
 
@@ -179,7 +183,7 @@ Whonixは[Kicksecure](https://www.kicksecure.com/)という、Whonix同様ENCRYP
 
 このOSは**VPN接続が不可能**だったり**デフォルトで使用可能なアプリケーションが少ない**という欠点があります。
 
-しかし、Whonix-Workstation以外のOSでもTorネットワークに接続する方法があるため、侵入テストツールに強い[Kali Linux](https://www.kali.org/)や、ユーザーフレンドリーな[Ubuntu](https://ubuntu.com/)などを使う方法を解説します。
+しかし、Whonix-Workstation以外のOSでもTorネットワークに接続する方法があるため、侵入テストツールに強い[Kali Linux](https://www.kali.org/)や、ユーザーフレンドリーな[Ubuntu](https://ubuntu.com/)などを使うことが可能です。
 
 まず、使いたいOSのイメージを公式のサイトからダウンロードし、VirtualBoxに新規追加、又はインポートします。
 
@@ -207,7 +211,7 @@ Workstationに搭載されているTor Browserは、ブラウザ側でTorへの�
 
 よって、次の方法を使ってTor Browser以外のブラウザ(例：Firefox, Mullvad Browser)でOnionサイトを閲覧する方法がおすすめです。
 
-（この解説ではMullvad Browserを使用します。）
+（著者はMullvad Browserを使用しています。）
 
 
 まずブラウザを開き、URLバーに`about:config`と入力します。
