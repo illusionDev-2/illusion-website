@@ -13,7 +13,6 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import Paper from "@mui/material/Paper";
 import { discordInviteCode } from "@/consts/discord";
 import ArticleCardList from "@/features/markdown/components/article-card-list";
-import { execPipe, takeSorted, toArray } from "iter-tools";
 import { lighten } from "@mui/material";
 
 export type TopPageProps = {
@@ -135,13 +134,7 @@ export default function TopPage({ guidelines, roles, blogArticles }: TopPageProp
               <Grid sm={12}>
                 <Stack spacing={1}>
                   <Typography component='h2' variant='h5'>ブログ</Typography>
-                  <ArticleCardList
-                    articles={execPipe(
-                      blogArticles,
-                      takeSorted(2, (a, b) => b.createdTimestamp - a.createdTimestamp),
-                      toArray
-                    )}
-                  />
+                  <ArticleCardList articles={blogArticles.slice().sort((a, b) => b.createdTimestamp - a.createdTimestamp).slice(0, 2)} />
                   {blogArticles.length > 2 && (
                     <div>
                       <MuiLink component={NextLink} href="/articles">もっと見る</MuiLink>
